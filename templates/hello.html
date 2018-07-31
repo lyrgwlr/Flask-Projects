@@ -1,0 +1,10 @@
+<!doctype html>
+<title>Hello from Flask</title>
+{% if name %}
+    <h1>{{ name }}!</h1>
+{% else %}
+    <h1>Hello,World!</h1>
+{% endif %}
+<form method="POST" action="/logout">
+    <button type='submit' id='logoutBtn' name={{ submitBtn }}>{{ submitBtn }}</button>
+</form>
