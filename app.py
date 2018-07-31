@@ -9,6 +9,8 @@ from flask import Flask,request,render_template,redirect,url_for,session,escape
 
 app = Flask(__name__)
 app.secret_key = 'A0Zr98j/3yX R~XHH!jmN]LWX/,?RT'
+app.config.from_object('config')
+
 @app.route('/')
 def index():
     return redirect(url_for('login'))
@@ -58,4 +60,4 @@ def logout():
             return redirect(url_for('index'))
     return redirect(url_for('hello'))
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=app.config['DEBUG'])
