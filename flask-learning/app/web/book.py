@@ -4,8 +4,8 @@ Created on Wed Aug  1 12:08:31 2018
 
 @author: 伍凌锐
 """
-import helper
-from searchbook import dogBook
+from app.libs import helper
+from app.spider.searchbook import dogBook
 from flask import jsonify,request
 from . import web
 from app.forms.book import SearchForm
@@ -17,8 +17,6 @@ def search():
         q:common search/isbn    
         page
     """
-    print(request.args)
-    print(type(request.args))
     form = SearchForm(request.args)
     if form.validate():
         q = form.q.data.strip()
@@ -27,7 +25,7 @@ def search():
         if isbn_or_key == 'isbn':
             result = dogBook.search_by_isbn(q)
         else:
-            result = dogBook.search_by_keyword(q)
+            result = dogBook.search_by_keyword(q,page)
         return jsonify(result)
     else:
-        return jsonify({'msg':'validate fail!'})
+        return jsonify(form.errors)
