@@ -1,7 +1,7 @@
 from sqlalchemy import Column,Integer,String
 from flask_sqlalchemy import SQLAlchemy
 
-db = SQLAlchemy()
+db = SQLAlchemy()#实例化SQLAlchemy()
 
 class Book(db.Model):
     id = Column(Integer,primary_key=True,autoincrement=True)#主键+自增长
@@ -16,4 +16,4 @@ class Book(db.Model):
     summary = Column(String(1000))
     image = Column(String(50))
     
-    
+     
