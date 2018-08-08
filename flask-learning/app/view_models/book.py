@@ -7,7 +7,12 @@ class BookViewModel:    #处理单个书数据
         self.summary = book['summary'] or ''
         self.image = book['image']
         self.author = '、'.join(book['author'])
-        
+        self.isbn = book['isbn']
+    @property
+    def intro(self):
+        intros = filter(lambda x: True if x else False,[self.author,self.publisher,self.price])
+        return '/'.join(intros)
+    
 class BookCollection:   #处理多个书数据
     def __init__(self):
         self.total = 0
@@ -17,7 +22,7 @@ class BookCollection:   #处理多个书数据
     def fill(self,dogBook,keyword):
         self.total = dogBook.total
         self.keyword = keyword
-        self.books = [BookViewModel() for book in dogBook.books]
+        self.books = [BookViewModel(book) for book in dogBook.books]
 #class BookViewModel:
 #    
 #    @classmethod
