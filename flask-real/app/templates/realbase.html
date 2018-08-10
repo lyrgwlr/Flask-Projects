@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Just Keep it Real</title>
+</head>
+<body>
+    {% block content %}
+        <div>
+            <table border="3">
+            <caption>红外门禁</caption>
+            <tr>
+              <td>
+                <a href="{{ url_for('real.redray',room='bedroom') }}">
+                    <button>卧室</button>
+                </a>
+              </td>
+              <td>
+                <a href="{{ url_for('real.redray',room='livingroom') }}">
+                     <button>客厅</button>
+                </a>
+              </td>
+              <td>
+                <a href="{{ url_for('real.redray',room='bathroom') }}">
+                    <button>卫生间</button>
+                </a>
+              </td>
+            </tr>
+            </table>
+        </div>
+        <br>
+        <div>
+            <table border="3">
+            <caption>卧室跌倒</caption>
+            <tr>
+                <td>
+                    <a href="{{ url_for('real.fall',person=1) }}">
+                        <button>  1  </button>
+                    </a>
+                </td>
+                <td>
+                    <a href="{{ url_for('real.fall',person=2) }}">
+                        <button>  2  </button>
+                    </a>
+                </td>
+                <td>
+                    <a href="{{ url_for('real.fall',person=3) }}">
+                        <button>  3  </button>
+                    </a>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <a href="{{ url_for('real.fall',person=4) }}">
+                        <button>  4  </button>
+                    </a>
+                </td>
+                <td>
+                    <a href="{{ url_for('real.fall',person=0) }}">
+                        <button>  0  </button>
+                    </a>
+                </td>
+                <td>
+                    <a href="{{ url_for('real.fall',person=8) }}">
+                        <button>  8  </button>
+                    </a>
+                </td>
+            </tr>
+            </table>
+        </div>
+        <br>
+        <div>
+            <caption>户门报警</caption>
+            <form method="post" action="/door">
+                <input type="text" name="people" id="people" value="000/111">
+                <button type="submit" >提交</button>
+            </form> 
+        </div>
+        <br>
+        <div>
+            <caption>心率控制</caption>
+            <form method="post" action="/heart">
+                <input type="text" name="heart" id="heart" value="heart rate">
+                <button type="submit" >提交</button>
+            </form> 
+        </div>
+    {% endblock %}
+</body>
+</html>
